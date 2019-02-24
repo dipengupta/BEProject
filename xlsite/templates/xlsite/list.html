@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>High Projects Inc.</title>
+    </head>
+
+    <body>
+
+
+<h2>Music Genre Classification and Conversion</h2>
+
+<!-- 
+        <p>Click <a href="{% url "seeFiles" %}">here</a> to see docs in media folder</p>
+
+
+<p>+++++++++++++++++====================+++++++++++++++++++</p> -->
+
+
+        <!-- Upload form. Note enctype attribute! -->
+        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+
+            <p><input type="submit" value="Upload"/></p>
+        </form>
+    
+
+        {% if xlData %}
+
+        <p>Status : {{xlData.docfile.name}} has been uploaded!!</p>    
+
+<p>+++++++++++++++++====================+++++++++++++++++++</p>
+
+        
+        <p>PHASE 1 : Classification</p>
+
+
+<!--         <p>
+            Click <a href="{% url "getFeatures" %}">here</a> to getFeatures of the above.
+            [NOTE : it might take around 45sec - 1min]
+        </p> -->
+
+
+        {% else %}
+            <p>No file uploaded to get data for :/</p>
+
+        {% endif %}
+
+<!--                 <p>+=======+</p>     -->    
+
+
+        <p>
+            Click <a href="{% url "classify" %}">here</a> to know the genre. <br> <br>
+
+            [NOTE : it might take around 3-5 mins]
+        </p>                
+
+
+<!--         {% if genre %}
+            <p> {{genre}} </p>
+        {% endif %}
+ -->
+    
+
+<p>+++++++++++++++++====================+++++++++++++++++++</p>
+
+
+
+<p>PHASE 2 : Conversion</p>
+
+
+
+    <form action="{% url "convert" %}" method="get">
+         {% csrf_token %}
+
+         Select a genre to convert to :
+
+        <select name='convToGenre'>
+            <option value='1'>Blues</option>
+            <option value='2'>Classical</option>
+            <option value='3'>Country</option>
+            <option value='4'>Disco</option>
+            <option value='5'>Hiphop</option>
+            <option value='6'>Jazz</option>
+            <option value='7'>Metal</option>
+            <option value='8'>Pop</option>
+            <option value='9'>Reggae</option>
+            <option value='10'>Rock</option>    
+        </select>
+
+        <p>[NOTE : it might take around 10-15 mins]</p>
+        
+        <p><input type="submit"/></p>
+    </form>
+
+
+
+<p>+++++++++++++++++====================+++++++++++++++++++</p>
+
+
+
+
+    </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

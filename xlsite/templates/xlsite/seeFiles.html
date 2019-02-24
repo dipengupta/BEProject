@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Files Present</title>
+</head>
+<body>
+	    {% if documents %}
+	    	
+			{% for file in documents %}
+			    	<li>{{file}}</li>  
+			{% endfor %}
+
+        {% else %}
+            <p>No documents.</p>
+  
+
+        {% endif %}
+</body>
+</html>
